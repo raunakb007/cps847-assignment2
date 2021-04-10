@@ -1,6 +1,13 @@
 language: python
 python:
   - "3.8"
+services:
+  - docker
 install: "pip install -r requirements.txt"
-script: coverage run unittest_main.py
-after_success: bash <(curl -s https://codecov.io/bash)
+script:
+  - coverage run unittest_main.py
+  - docker image build -t raunakbajaj/cps847assignment2 .
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push raunakbajaj/cps847assignment2
