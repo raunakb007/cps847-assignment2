@@ -1,1 +1,2 @@
 coverage
+Flask==0.12
