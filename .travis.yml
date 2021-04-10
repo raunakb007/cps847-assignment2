@@ -17,7 +17,7 @@ deploy:
   region: "us-east-2"
   app: "cps847app"
   env: "Cps847app-env"
-  bucket_name: "elasticbeanstalk-us-east-2"
+  bucket_name: "elasticbeanstalk-us-east-2-061955573660"
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
