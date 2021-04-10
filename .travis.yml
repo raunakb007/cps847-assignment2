@@ -11,3 +11,14 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push raunakbajaj/cps847assignment2
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "cps847app"
+  env: "Cps847app-env"
+  bucket_name: "elasticbeanstalk-us-east-2"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
